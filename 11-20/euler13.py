@@ -106,6 +106,4 @@ string = """37107287533902102798797998220837590246510135740250
 numbers = string.replace('\n', ' ')
 final_numbers = list(numbers.split(' '))
 
-
-
-print(final_numbers)
+print(f'The first 10 digits of the sum are : {str(sum(int(number[:11]) for number in final_numbers))[:10]}')

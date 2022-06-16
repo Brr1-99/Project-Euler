@@ -58,4 +58,4 @@ for i in range (19,2,-1):
             product = diag_l
             numbers = [final_grid[i+20*j], final_grid[(i-1)+20*(j+1)], final_grid[(i-2)+20*(j+2)],final_grid[(i-3)+20*(j+3)]]
 
-print(f'The max product is {product} and the numbers are: {numbers} ')
+print(f'The max product is : {product} and the numbers are: {numbers} ')

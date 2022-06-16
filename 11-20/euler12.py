@@ -27,4 +27,4 @@ while len(num_divisors) <= 500:
         num_divisors = new_div
     i+= 1
 
-print(f'The first triangle number with over 500 divisors is {sum(range(i))} with a total of {len(num_divisors)}')
+print(f'The first triangle number with over 500 divisors is "{sum(range(i))}" with a total of "{len(num_divisors)}"')
