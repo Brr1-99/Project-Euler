@@ -6,8 +6,8 @@ Find the product of the coefficients, a and b , for the quadratic expression tha
 import math
 
 def checkPrime(n):
-    for n in range(2, int(math.sqrt(n))+1):
-        if n % n == 0:
+    for i in range(2, int(math.sqrt(n))+1):
+        if n % i == 0:
             return False
     return True
 
