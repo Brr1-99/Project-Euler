@@ -7,3 +7,28 @@ It can be seen that P4 + P7 = 22 + 70 = 92 = P8. However, their difference, 70 -
 
 Find the pair of pentagonal numbers, Pj and Pk, for which their sum and difference are pentagonal and D = |Pk - Pj| is minimised; what is the value of D?
 """
+
+import math
+
+pent = lambda x: x*(3*x-1)/2
+
+def is_pent(x: int) -> bool:
+	f = (.5 + math.sqrt(.25+6*x))/3
+	if f - int(f) == 0:
+		return True
+	else:
+		return False
+
+pair = [0,0]
+
+flag = False
+for i in range(1,3000):
+    for j in range(i+1,3000):
+        if is_pent(pent(j) - pent(i)) and is_pent(pent(j) + pent(i)):
+            flag = True
+            pair =[int(pent(j)) , int(pent(i))]
+            break
+    if flag:
+        break
+
+print(f'The pair of pentagonal numbers for which their difference is minimised is : {pair[0]} & {pair[1]} with a difference of {abs(pair[0] - pair[1])}')

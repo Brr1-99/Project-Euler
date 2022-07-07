@@ -4,7 +4,7 @@ What is the value of the first triangle number to have over five hundred divisor
 
 import math
 
-def getDivisors(n):
+def getDivisors(n: int)-> list[int]:
     divisors = [1]
     i = 1
     while i<= math.sqrt(n):

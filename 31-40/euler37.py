@@ -4,7 +4,7 @@ Find the sum of the only eleven primes that are both truncatable from left to ri
 
 import math
 
-def checkPrime(n):
+def checkPrime(n: int) -> bool:
     if n == 1:
         return False
     for i in range(2, int(math.sqrt(n))+1):

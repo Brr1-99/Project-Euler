@@ -4,7 +4,7 @@ Find the sum of all numbers, less than one million, which are palindromic in bas
 
 suma = 0
 
-def checkPalindrom(n):
+def checkPalindrom(n: str) -> bool:
     for i in range(int(len(n)/2)):
         if n[i] != n[-(1+i)]:
             return False

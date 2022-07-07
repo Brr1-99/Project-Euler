@@ -5,7 +5,7 @@ Find the product of the coefficients, a and b , for the quadratic expression tha
 
 import math
 
-def checkPrime(n):
+def checkPrime(n: int) -> bool:
     for i in range(2, int(math.sqrt(n))+1):
         if n % i == 0:
             return False

@@ -4,7 +4,7 @@ What is the largest 1 to 9 pandigital 9-digit number that can be formed as the c
 
 from itertools import count
 
-def ispandigital(n):
+def ispandigital(n: int) -> bool:
    digits = str(n)
    for i in count(2):
       ndig = len(digits)

@@ -3,7 +3,7 @@ There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 Find the product abc.
 """
 
-def check_pathagorean(a, b, c):
+def check_pathagorean(a: int, b: int, c: int) -> bool:
     return a**2 + b**2 == c**2
 
 for a in range(1, 332):

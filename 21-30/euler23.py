@@ -4,7 +4,7 @@ Find the sum of all the positive integers which cannot be written as the sum of 
 
 import math
 
-def getDivisorsSum(n):
+def getDivisorsSum(n: int) -> int:
     divisors = []
     i = 1
     while i<= math.sqrt(n):

@@ -1,10 +1,10 @@
-import math
-
 """
 Find the sum of all the primes below two million.
 """
 
-def checkPrime(x):
+import math
+
+def checkPrime(x: int) -> bool:
     prime = True
     for i in range(2, round(math.sqrt(x))+1):
         if x % i == 0:

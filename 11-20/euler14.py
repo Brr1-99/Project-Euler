@@ -11,7 +11,7 @@ number = 1
 
 way = 0
 
-def steps(n):
+def steps(n: int) -> int:
     global way
     if n in numbers:
         way += numbers[n]

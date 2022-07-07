@@ -8,7 +8,7 @@ How many circular primes are there below one million?
 
 import math
 
-def checkPrime(n):
+def checkPrime(n: int) -> bool:
     for i in range(2, int(math.sqrt(n))+1):
         if n % i == 0:
             return False

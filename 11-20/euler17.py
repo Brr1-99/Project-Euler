@@ -44,7 +44,7 @@ numbers = {
 
 sum = 0
 
-def less_hundred(n):
+def less_hundred(n: int) -> int:
     global sum
     if n in numbers:
         sum+= numbers[n]

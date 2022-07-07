@@ -6,7 +6,7 @@ import math
 
 amicable = 0
 
-def getDivisorsSum(n):
+def getDivisorsSum(n: int) -> list[int]:
     divisors = []
     i = 1
     while i<= math.sqrt(n):
