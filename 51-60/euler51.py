@@ -6,3 +6,14 @@ yielding the family: 56003, 56113, 56333, 56443, 56663, 56773, and 56993. Conseq
 
 Find the smallest prime which, by replacing part of the number (not necessarily adjacent digits) with the same digit, is part of an eight prime value family.
 """
+
+def sieve_of_eratosthenes(n):
+    primes = [True] * (n+1)
+    primes[0] = primes[1] = False
+    for i in range(2, int(n**0.5)+1):
+        if primes[i]:
+            for j in range(i*i, n+1, i):
+                primes[j] = False
+    return [x for x in range(n+1) if primes[x]]
+
+print(sieve_of_eratosthenes(1000000)[-1])
