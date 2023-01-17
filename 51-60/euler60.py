@@ -5,32 +5,51 @@ For example, taking 7 and 109, both 7109 and 1097 are prime. The sum of these fo
 
 Find the lowest sum for a set of five primes for which any two primes concatenate to produce another prime.
 """
+import math
 
-import math, itertools
+def sieve_of_eratosthenes(n):
+    primes = [True] * (n+1)
+    primes[0] = primes[1] = False
+    for i in range(2, int(n**0.5)+1):
+        if primes[i]:
+            for j in range(i*i, n+1, i):
+                primes[j] = False
+    return [x for x in range(n+1) if primes[x]]
 
-primes = [2,3,5,7]
+def checkPrime(x: int) -> bool:
+    prime = True
+    for i in range(2, round(math.sqrt(x))+1):
+        if x % i == 0:
+            prime = False
+            break
+    return prime
 
-def checkPrime(n: int) -> bool:
-    for i in range(2, int(math.sqrt(n))+1):
-        if n % i == 0:
-            return False
-    return True
+def find_lowest_prime_sum(n):
+    def is_prime(x):
+        return checkPrime(x)
 
-for i in range(7,30000, 2):
-    if checkPrime(i):
-        primes.append(i)
+    def check_concatenation(p1, p2):
+        return is_prime(int(str(p1) + str(p2))) and is_prime(int(str(p2) + str(p1)))
 
+    primes = sieve_of_eratosthenes(1000000)
+    prime_list = []
+    for prime in primes:
+        prime_list.append(prime)
+    result = []
+    for i in range(len(prime_list)):
+        for j in range(i+1, len(prime_list)):
+            if check_concatenation(prime_list[i], prime_list[j]):
+                result.append((prime_list[i], prime_list[j]))
 
-notFound = True
+    primes = []
+    for prime1, prime2 in result:
+        if prime1 not in primes:
+            primes.append(prime1)
+        if prime2 not in primes:
+            primes.append(prime2)
+        if len(primes) == n:
+            break
 
-while notFound:
-        notFound = False
-        for perm in list(itertools.permutations(primes, 5)):
-            p = perm
-            for i in range(0, 4):
-                for j in range(i + 1, 5):
-                    if not (checkPrime(int(str(i)+str(j))) and checkPrime(int(str(j)+str(i)))):
-                        notFound = True
-                        break
+    return sum(primes),primes
 
-print(p)
+print(find_lowest_prime_sum(5))
