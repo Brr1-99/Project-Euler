@@ -34,6 +34,4 @@ for value in numbers.values():
     if value == 89:
         total += 1
 
-print(total)
-
-# Mirar problema prisionero que hice con dawichi
+print(f"The amount of numbers that reach 89 below 10 million are: {total}")
