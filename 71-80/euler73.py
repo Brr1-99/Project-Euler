@@ -7,3 +7,15 @@ How many fractions lie between 1/3 and 1/2 in the sorted set of reduced proper f
 """
 
 # Loop starting from the maximum d
+
+import math
+
+fractions = []
+
+#Iterate through all denominators
+for i in range(4, 12001):
+    # Iterate through all coeff for which 1/3 < n/d < 1/2
+    for j in range(math.ceil(i/3), math.ceil(i/2)):
+        fractions.append(j/i)
+
+print(f"The number of fractions that lie between 1/3 and 1/2 in the sorted set of reduced proper fractions for d ≤ 12,000 is : {len(set(fractions)) - 1}")
