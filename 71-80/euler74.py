@@ -24,6 +24,8 @@ import math
 def factorial_sum(n: int) -> int:
     return sum(math.factorial(int(i)) for i in str(n))
 
+numbers = [i for i in range(1, 1000000)]
+
 def obtain_chain(n: int) -> list:
     numbers = 1
     memory_arr = [n]
@@ -35,8 +37,19 @@ def obtain_chain(n: int) -> list:
             numbers += 1
         
         else:
-            return memory_arr
+            return memory_arr, len(memory_arr)
             
         val = number
 
-print(factorial_sum(169))
+total = 0
+
+while len(numbers) > 1:
+    print(len(numbers))
+    arr, length = obtain_chain(numbers[-1])
+
+    if length == 60:
+        total+=1
+
+    numbers = [x for x in numbers if x not in arr]
+
+print(total)
