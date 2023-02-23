@@ -6,10 +6,15 @@ The next such arrangement, for which there is exactly 50% chance of taking two b
 By finding the first arrangement to contain over 10**12 = 1,000,000,000,000 discs in total, determine the number of blue discs that the box would contain.
 """
 
-x = 2112
+x = 15
 
-y = 73837
+y = 6
 
-x + y > 10**12
+while (x + y) < 10**12:
 
-(x/(x+y)*x-1/(x-1+y)) == 0.5
+    new_y = 2*x + y -1
+    new_x = 2*new_y + x
+
+    x, y = new_x, new_y
+
+print(f"The number of blue balls is : {x}")
