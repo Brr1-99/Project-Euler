@@ -24,32 +24,32 @@ import math
 def factorial_sum(n: int) -> int:
     return sum(math.factorial(int(i)) for i in str(n))
 
-numbers = [i for i in range(1, 1000000)]
-
 def obtain_chain(n: int) -> list:
-    numbers = 1
     memory_arr = [n]
-    val = n
-    while True:
-        number = factorial_sum(val)
-        if number not in memory_arr:
-            memory_arr.append(number)
-            numbers += 1
-        
+    repeat = False
+    while not repeat:
+        n = factorial_sum(n)
+        if n not in memory_arr:
+            memory_arr.append(n)
+
         else:
-            return memory_arr, len(memory_arr)
+            repeat = True
             
-        val = number
+    return memory_arr
 
-total = 0
+def calc_chain() -> int:
+    total = 0
 
-while len(numbers) > 1:
-    print(len(numbers))
-    arr, length = obtain_chain(numbers[-1])
+    for i in range(1, 1000000):
+        print(i)
+        if len(obtain_chain(i)) == 60:
+            total +=1
 
-    if length == 60:
-        total+=1
+    return(total)
 
-    numbers = [x for x in numbers if x not in arr]
 
-print(total)
+def main()-> None:
+    x = calc_chain()
+    print(f'The number of distinct chains of length 60 is: {x}')
+
+main()
