@@ -2,14 +2,19 @@
 Find the sum of digits in the numerator of the 100th convergent of the continued fraction for e .
 """
 
-from math import factorial
-from fractions import Fraction
+e = [2]
+i = 1
 
-e = 0
+while len(e) < 100:
+    e.extend([1, 2*i, 1])
+    i += 1
 
-for i in range(0,150):
-    e+= 1/factorial(i)
 
-numerator = str(Fraction(e).limit_denominator()).split('/')[0]
+numerator = 1
+denominator = e.pop()
 
-print(sum(int(n) for n in numerator))
+# looping through the list to get the convergents
+for i in e[::-1]:
+    denominator, numerator =  (denominator * i + numerator, denominator)
+
+print(f'The sum of the numerator is: {sum([int(digit) for digit in str(denominator)])}')
