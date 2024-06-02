@@ -14,6 +14,28 @@ def sieve_of_eratosthenes(n):
         if primes[i]:
             for j in range(i*i, n+1, i):
                 primes[j] = False
-    return [x for x in range(n+1) if primes[x]]
+    return [x for x in range(n+1) if primes[x] and x > 100000]
 
-print(sieve_of_eratosthenes(1000000)[-1])
+def check_filter(x: int):
+    data = {c: str(x).count(c) for c in set([m for m in str(x)])}
+    keys = [key for key, val in data.items() if val >= 3]
+    if keys != []:
+        return True, str(x).replace(str(keys[0]), '*')
+    else:
+        return False, '0'
+
+primes = sieve_of_eratosthenes(1000000)
+
+filtered_primes = []
+for x in primes:
+    is_filtered, new_p = check_filter(x)
+    if is_filtered:
+        filtered_primes.append(new_p)
+
+filtered_set = {c: filtered_primes.count(c) for c in set(filtered_primes)}
+keys = [key for key, val in filtered_set.items() if val >= 6]
+
+print(keys) # ['*7*9*7', '2***03', '37***3', '**7*67', '9*8**3', '***109', '8**8*1', '4*3**3', '*2*3*3', '*6*0*7']
+
+# Remove ***109 because no posible 3 digit prime
+# Then smallest after checking all families have 8 primes
